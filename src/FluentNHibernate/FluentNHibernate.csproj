@@ -270,11 +270,14 @@
     <Compile Include="Mapping\IDynamicComponent.cs" />
     <Compile Include="Mapping\IHasAttributes.cs" />
     <Compile Include="Mapping\IJoinedSubclass.cs" />
+    <Compile Include="Mapping\IKeyPart.cs" />
     <Compile Include="Mapping\IMappingPart.cs" />
     <Compile Include="Mapping\INotFoundExpression.cs" />
     <Compile Include="Mapping\InvalidPrefixException.cs" />
     <Compile Include="Mapping\IRelationship.cs" />
     <Compile Include="Mapping\ISubclass.cs" />
+    <Compile Include="Mapping\KeyColumnCollection.cs" />
+    <Compile Include="Mapping\KeyPart.cs" />
     <Compile Include="Mapping\MappingPartComparer.cs" />
     <Compile Include="Mapping\Prefix.cs" />
     <Compile Include="Utils\XmlExtensions.cs" />

@@ -23,13 +23,13 @@ namespace FluentNHibernate.Conventions
 
         public bool Accept(IOneToManyPart target)
         {
-            return target.KeyColumnNames.List().Count == 0;
+            return target.Key.Columns.List().Count == 0;
         }
 
         public void Apply(IOneToManyPart target)
         {
-            target.KeyColumnNames.Clear();
-            target.KeyColumnNames.Add(GetKeyName(null, target.EntityType));
+            target.Key.Columns.Clear();
+            target.Key.Columns.Add(GetKeyName(null, target.EntityType));
         }
 
         public bool Accept(IManyToManyPart target)

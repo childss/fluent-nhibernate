@@ -28,6 +28,6 @@ namespace FluentNHibernate.Mapping
         /// Inverts the next boolean
         /// </summary>
         IOneToManyPart Not { get; }
-        IColumnNameCollection KeyColumnNames { get; }
+		IKeyPart Key { get; }
     }
 }
