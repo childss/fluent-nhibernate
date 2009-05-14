@@ -110,6 +110,9 @@
     <Compile Include="Cfg\SetupConventionFinder.cs" />
     <Compile Include="Conventions\ConventionsCollection.cs" />
     <Compile Include="Conventions\Defaults\DefaultForeignKeyConvention.cs" />
+    <Compile Include="Conventions\Defaults\HasMapCollectionNameConvention.cs" />
+    <Compile Include="Conventions\Defaults\HasMapIndexNameConvention.cs" />
+    <Compile Include="Conventions\Defaults\HasMapTableNameConvention.cs" />
     <Compile Include="Conventions\Discovery\BaseMappingPartDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\ClassDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\ClassMappingPartDiscoveryConvention.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Conventions\Discovery\DynamicComponentMappingPartDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\HasManyDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\HasManyToManyDiscoveryConvention.cs" />
+    <Compile Include="Conventions\Discovery\HasMapDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\HasOneDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\IdDiscoveryConvention.cs" />
     <Compile Include="Conventions\Discovery\JoinDiscoveryConvention.cs" />
@@ -176,6 +180,7 @@
     <Compile Include="Conventions\Helpers\Table.cs" />
     <Compile Include="Conventions\Helpers\Builders\VersionConventionBuilder.cs" />
     <Compile Include="Conventions\IJoinedSubclassConvention.cs" />
+    <Compile Include="Conventions\IMapConvention.cs" />
     <Compile Include="Conventions\ISubclassConvention.cs" />
     <Compile Include="Conventions\MultipleAttribute.cs" />
     <Compile Include="Data\Entity.cs" />
@@ -269,12 +274,16 @@
     <Compile Include="Mapping\IDiscriminatorPart.cs" />
     <Compile Include="Mapping\IDynamicComponent.cs" />
     <Compile Include="Mapping\IHasAttributes.cs" />
+    <Compile Include="Mapping\IIndexMapping.cs" />
     <Compile Include="Mapping\IJoinedSubclass.cs" />
+    <Compile Include="Mapping\IMapCollectionPart.cs" />
     <Compile Include="Mapping\IMappingPart.cs" />
+    <Compile Include="Mapping\IndexMappingBase.cs" />
     <Compile Include="Mapping\INotFoundExpression.cs" />
     <Compile Include="Mapping\InvalidPrefixException.cs" />
     <Compile Include="Mapping\IRelationship.cs" />
     <Compile Include="Mapping\ISubclass.cs" />
+    <Compile Include="Mapping\MapCollectionPart.cs" />
     <Compile Include="Mapping\MappingPartComparer.cs" />
     <Compile Include="Mapping\Prefix.cs" />
     <Compile Include="Utils\XmlExtensions.cs" />

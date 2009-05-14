@@ -4,7 +4,7 @@ using FluentNHibernate.Mapping;
 
 namespace FluentNHibernate.Conventions
 {
-    public abstract class ForeignKeyConvention : IReferenceConvention, IHasManyConvention, IHasManyToManyConvention
+    public abstract class ForeignKeyConvention : IReferenceConvention, IHasManyConvention, IHasManyToManyConvention, IMapConvention
     {
         private bool acceptParent = true;
         private bool acceptChild = true;
@@ -47,6 +47,17 @@ namespace FluentNHibernate.Conventions
 
             if (acceptChild && target.ChildType != null)
                 target.WithChildKeyColumn(GetKeyName(null, target.ChildType));
+        }
+
+        public bool Accept(IMapCollectionPart target)
+        {
+            return target.KeyColumnNames.List().Count == 0;
+        }
+
+        public void Apply(IMapCollectionPart target)
+        {
+            target.KeyColumnNames.Clear();
+            target.KeyColumnNames.Add(GetKeyName(null, target.EntityType));
         }
     }
 }

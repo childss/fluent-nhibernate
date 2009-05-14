@@ -268,6 +268,36 @@ namespace FluentNHibernate.Mapping
             return MapHasManyToMany<TChild, object>(expression);
         }
 
+        public MapCollectionPart<TIndex, TValue> HasMap<TIndex, TValue>(Expression<Func<T, IDictionary<TIndex, TValue>>> expression)
+        {
+            return MapHasMap<TIndex, TValue, IDictionary<TIndex, TValue>>(expression);
+        }
+
+        private MapCollectionPart<TIndex, TValue> MapHasMap<TIndex, TValue, TReturn>(Expression<Func<T, TReturn>> expression)
+        {
+            return ReflectionHelper.IsMethodExpression(expression)
+                ? HasMap<TIndex, TValue>(ReflectionHelper.GetMethod(expression))
+                : HasMap<TIndex, TValue>(ReflectionHelper.GetProperty(expression));
+        }
+
+        public MapCollectionPart<TIndex, TValue> HasMap<TIndex, TValue>(MethodInfo method)
+        {
+            var part = new MapCollectionPart<TIndex, TValue>(EntityType, method);
+
+            AddPart(part);
+
+            return part;
+        }
+
+        public MapCollectionPart<TIndex, TValue> HasMap<TIndex, TValue>(PropertyInfo property)
+        {
+            var part = new MapCollectionPart<TIndex, TValue>(EntityType, property);
+
+            AddPart(part);
+
+            return part;
+        }
+
         public VersionPart Version(Expression<Func<T, object>> expression)
         {
             return Version(ReflectionHelper.GetProperty(expression));
@@ -369,6 +399,11 @@ namespace FluentNHibernate.Mapping
         IManyToManyPart IClasslike.HasManyToMany<TEntity, TChild>(Expression<Func<TEntity, IEnumerable<TChild>>> expression)
         {
             return HasManyToMany<TChild>(ReflectionHelper.GetProperty(expression));
+        }
+
+        IMapCollectionPart IClasslike.HasMap<TEntity, TIndex, TChild>(Expression<Func<TEntity, IDictionary<TIndex, TChild>>> expression)
+        {
+            return HasMap<TIndex, TChild>(ReflectionHelper.GetProperty(expression));
         }
 
         #endregion

@@ -58,6 +58,8 @@ namespace FluentNHibernate.Mapping
         /// <returns>many-to-many part</returns>
         IManyToManyPart HasManyToMany<TEntity, TChild>(Expression<Func<TEntity, IEnumerable<TChild>>> expression);
 
+        IMapCollectionPart HasMap<TEntity, TIndex, TChild>(Expression<Func<TEntity, IDictionary<TIndex, TChild>>> expression);
+
         IVersion Version<T>(Expression<Func<T, object>> expression);
     }
 }
