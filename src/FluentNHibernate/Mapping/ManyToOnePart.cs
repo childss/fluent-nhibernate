@@ -135,6 +135,8 @@ namespace FluentNHibernate.Mapping
             if (columns.Count == 0)
                 properties.Store("column", columnName);
 
+            properties.Store("class", typeof(TOther).AssemblyQualifiedName);
+
             var manyToOneElement = classElement.AddElement("many-to-one").WithProperties(properties);
 
             if (columns.Count > 0)
