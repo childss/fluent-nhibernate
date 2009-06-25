@@ -80,9 +80,11 @@
     <Compile Include="Conventions\AcceptanceCriteria\InverterAcceptanceCriteria.cs" />
     <Compile Include="Conventions\Alterations\IManyToManyAlteration.cs" />
     <Compile Include="Conventions\Alterations\IManyToOneAlteration.cs" />
+    <Compile Include="Conventions\Alterations\INotFoundAlteration.cs" />
     <Compile Include="Conventions\Alterations\IOneToManyAlteration.cs" />
     <Compile Include="Conventions\Alterations\CollectionAlteration.cs" />
     <Compile Include="Conventions\Alterations\ClassAlteration.cs" />
+    <Compile Include="Conventions\Alterations\NotFoundAlteration.cs" />
     <Compile Include="Conventions\Helpers\Builders\ClassConventionBuilder.cs" />
     <Compile Include="Conventions\Helpers\Builders\HasManyConventionBuilder.cs" />
     <Compile Include="Conventions\Helpers\Builders\HasManyToManyConventionBuilder.cs" />

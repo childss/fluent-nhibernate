@@ -5,4 +5,9 @@ namespace FluentNHibernate.MappingModel.Collections
         TypeReference Class { get; }
         string NotFound { get; }
     }
+
+    public interface ICollectionRelationshipMapping<TRelationship> : ICollectionRelationshipMapping
+    {
+        AttributeStore<TRelationship> Attributes { get; }
+    }
 }

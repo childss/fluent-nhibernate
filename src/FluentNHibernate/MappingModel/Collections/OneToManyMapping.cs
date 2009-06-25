@@ -2,7 +2,7 @@ using System;
 
 namespace FluentNHibernate.MappingModel.Collections
 {
-    public class OneToManyMapping : MappingBase, ICollectionRelationshipMapping
+    public class OneToManyMapping : MappingBase, ICollectionRelationshipMapping<OneToManyMapping>
     {
         private readonly AttributeStore<OneToManyMapping> attributes = new AttributeStore<OneToManyMapping>();
         public Type ChildType { get; set; }

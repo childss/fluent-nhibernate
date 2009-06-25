@@ -2,6 +2,7 @@ namespace FluentNHibernate.Conventions.Alterations
 {
     public interface IOneToManyAlteration
     {
+        INotFoundAlteration NotFound { get; }
     }
 
     public interface IOneToManyCollectionAlteration

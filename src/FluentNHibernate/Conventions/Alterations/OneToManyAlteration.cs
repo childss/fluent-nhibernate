@@ -10,5 +10,10 @@ namespace FluentNHibernate.Conventions.Alterations
         {
             this.mapping = mapping;
         }
+
+        public INotFoundAlteration NotFound
+        {
+            get { return new NotFoundAlteration<OneToManyMapping>(mapping); }
+        }
     }
 }
