@@ -34,6 +34,18 @@ namespace FluentNHibernate.Testing.FluentInterfaceTests
         }
 
         [Test]
+        public void IndexSetsModelIndexPropertyToValue()
+        {
+            Any<SecondMappedObject>()
+                .Mapping(m => m
+                    .IdentityType<int>()
+                    .EntityIdentifierColumn("col")
+                    .EntityTypeColumn("col2")
+                    .Index("index"))
+                .ModelShouldMatch(x => x.Index.ShouldEqual("index"));
+        }
+
+        [Test]
         public void IdentityTypeSetsModelIdTypePropertyToPropertyTypeName()
         {
             Any<SecondMappedObject>()

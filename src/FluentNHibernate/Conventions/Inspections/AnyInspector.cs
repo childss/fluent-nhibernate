@@ -84,6 +84,11 @@ namespace FluentNHibernate.Conventions.Inspections
             get { return mapping.Name; }
         }
 
+        public string Index
+        {
+            get { return mapping.Index; }
+        }
+
         public IDefaultableEnumerable<IColumnInspector> TypeColumns
         {
             get

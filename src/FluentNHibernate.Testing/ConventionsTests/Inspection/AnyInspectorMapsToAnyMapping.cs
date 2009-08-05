@@ -68,6 +68,28 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection
         }
 
         [Test]
+        public void IndexMapped()
+        {
+            mapping.Index = "index";
+            inspector.Index.ShouldEqual("index");
+        }
+
+        [Test]
+        public void IndexIsSet()
+        {
+            mapping.Index = "index";
+            inspector.IsSet(Prop(x => x.Index))
+                .ShouldBeTrue();
+        }
+
+        [Test]
+        public void IndexIsNotSet()
+        {
+            inspector.IsSet(Prop(x => x.Index))
+                .ShouldBeFalse();
+        }
+
+        [Test]
         public void IdentifierColumnsCollectionHasSameCountAsMapping()
         {
             mapping.AddIdentifierColumn(new ColumnMapping());

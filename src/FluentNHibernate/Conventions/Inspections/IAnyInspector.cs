@@ -13,6 +13,7 @@ namespace FluentNHibernate.Conventions.Inspections
         TypeReference MetaType { get; }
         IEnumerable<IMetaValueInspector> MetaValues { get; }
         string Name { get; }
+        string Index { get; }
         IDefaultableEnumerable<IColumnInspector> TypeColumns { get; }
         bool Update { get; }
         bool LazyLoad { get; }

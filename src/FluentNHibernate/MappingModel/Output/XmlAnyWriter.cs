@@ -32,6 +32,9 @@ namespace FluentNHibernate.MappingModel.Output
             if (mapping.HasValue(x => x.Cascade))
                 element.WithAtt("cascade", mapping.Cascade);
 
+            if (mapping.HasValue(x => x.Index))
+                element.WithAtt("index", mapping.Index);
+
             if (mapping.HasValue(x => x.IdType))
                 element.WithAtt("id-type", mapping.IdType);
 

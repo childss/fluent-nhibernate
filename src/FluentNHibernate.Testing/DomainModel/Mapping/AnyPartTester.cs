@@ -45,6 +45,19 @@ namespace FluentNHibernate.Testing.DomainModel.Mapping
         }
 
         [Test]
+        public void IndexCanBeSet()
+        {
+            new MappingTester<MappedObject>()
+                .ForMapping(map => map.ReferencesAny(x => x.Parent)
+                                        .EntityIdentifierColumn("AnyId")
+                                        .EntityTypeColumn("AnyType")
+                                        .IdentityType(x => x.Id)
+                                        .Index("index"))
+                .Element("class/any")
+                .HasAttribute("index", "index");
+        }
+
+        [Test]
         public void IdTypeCanBeSet()
         {
             new MappingTester<MappedObject>()

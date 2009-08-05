@@ -49,6 +49,12 @@ namespace FluentNHibernate.Mapping
             get { return cascade; }
         }
 
+        public AnyPart<T> Index(string index)
+        {
+            mapping.Index = index;
+            return this;
+        }
+
         public AnyPart<T> IdentityType(Expression<Func<T, object>> expression)
         {
             return IdentityType(ReflectionHelper.GetProperty(expression).PropertyType);

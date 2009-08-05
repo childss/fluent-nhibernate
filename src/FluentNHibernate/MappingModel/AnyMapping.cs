@@ -75,6 +75,12 @@ namespace FluentNHibernate.MappingModel
             set { attributes.Set(x => x.Cascade, value); }
         }
 
+        public string Index
+        {
+            get { return attributes.Get(x => x.Index); }
+            set { attributes.Set(x => x.Index, value); }
+        }
+
         public bool Lazy
         {
             get { return attributes.Get(x => x.Lazy); }
