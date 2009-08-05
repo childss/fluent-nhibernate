@@ -94,7 +94,7 @@
     <Compile Include="ConventionsTests\AcceptanceCriteria\PropertyAcceptanceCriteriaCollectionTests.cs" />
     <Compile Include="ConventionsTests\AcceptanceCriteria\PropertyAcceptanceCriteriaAnyTests.cs" />
     <Compile Include="ConventionsTests\AcceptanceCriteria\PropertyAcceptanceCriteriaInheritanceTests.cs" />
-    <Compile Include="ConventionsTests\Alterations\PropertyAlterationMapsToPropertyMapping.cs" />
+    <Compile Include="ConventionsTests\AcceptanceCriteria\PropertyAcceptanceCriteriaIsAnyTests.cs" />
     <Compile Include="ConventionsTests\ConventionsCollectionTests.cs" />
     <Compile Include="ConventionsTests\FluentInterfaceOverridingConventionsJoinedSubclassTests.cs" />
     <Compile Include="ConventionsTests\FluentInterfaceOverridingConventionsSubclassTests.cs" />
@@ -118,6 +118,13 @@
     <Compile Include="ConventionsTests\Inspection\CompositeIdInspectorMapsToCompositeIdMapping.cs" />
     <Compile Include="ConventionsTests\Inspection\CollectionInspectorMapsToBagMapping.cs" />
     <Compile Include="ConventionsTests\Inspection\CompositeElementInspectorMapsToCompositeElementMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\ArrayInspectorMapsToArrayMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\BagInspectorMapsToBagMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\SetInspectorMapsToSetMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\MapInspectorMapsToMapMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\ListInspectorMapsToListMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\IndexManyToManyInspectorMapsToIndexManyToManyMapping.cs" />
+    <Compile Include="ConventionsTests\Inspection\IndexInspectorMapsToIndexMapping.cs" />
     <Compile Include="ConventionsTests\Inspection\ElementInspectorMapsToElementMapping.cs" />
     <Compile Include="ConventionsTests\Inspection\ManyToManyInspectorMapsToManyToManyMapping.cs" />
     <Compile Include="ConventionsTests\Inspection\OneToManyInspectorMapsToOneToManyMapping.cs" />
@@ -139,6 +146,7 @@
     <Compile Include="ConventionsTests\Inspection\ValueTypes\CascadeTests.cs" />
     <Compile Include="ConventionsTests\Inspection\ValueTypes\FetchTests.cs" />
     <Compile Include="ConventionsTests\Inspection\ValueTypes\GeneratedTests.cs" />
+    <Compile Include="ConventionsTests\Inspection\ValueTypes\IncludeTests.cs" />
     <Compile Include="ConventionsTests\Inspection\ValueTypes\NotFoundTests.cs" />
     <Compile Include="ConventionsTests\Inspection\ValueTypes\OnDeleteTests.cs" />
     <Compile Include="ConventionsTests\Inspection\ValueTypes\OptimisticLockTests.cs" />

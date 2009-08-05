@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FluentNHibernate.Conventions.Inspections;
+﻿using FluentNHibernate.Conventions.Inspections;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.ConventionsTests.Inspection.ValueTypes
@@ -13,25 +9,31 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection.ValueTypes
         [Test]
         public void ShouldBeEqualToAnotherTheSame()
         {
-            Access.Field().ShouldEqual(Access.Field());
+            Access.Field.ShouldEqual(Access.Field);
         }
 
         [Test]
         public void ShouldNotBeEqualToADifferentOne()
         {
-            Access.Field().ShouldNotEqual(Access.Property());
+            Access.Field.ShouldNotEqual(Access.Property);
         }
 
         [Test]
         public void FieldShouldHaveCorrectValue()
         {
-            Access.Field().ToString().ShouldEqual("field");
+            Access.Field.ToString().ShouldEqual("field");
+        }
+
+        [Test]
+        public void BackFieldShouldHaveCorrectValue()
+        {
+            Access.BackField.ToString().ShouldEqual("backfield");
         }
 
         [Test]
         public void PropertyShouldHaveCorrectValue()
         {
-            Access.Property().ToString().ShouldEqual("property");
+            Access.Property.ToString().ShouldEqual("property");
         }
 
         [Test]
@@ -118,6 +120,18 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection.ValueTypes
         public void ReadOnlyPropertyThroughMUnderscorePascalCaseFieldShouldHaveCorrectValue()
         {
             Access.ReadOnlyPropertyThroughPascalCaseField(PascalCasePrefix.MUnderscore).ToString().ShouldEqual("no-setter.pascalcase-m-underscore");
+        }
+
+        [Test]
+        public void NoOpShouldHaveCorrectValue()
+        {
+            Access.NoOp.ToString().ShouldEqual("noop");
+        }
+
+        [Test]
+        public void NoneShouldHaveCorrectValue()
+        {
+            Access.None.ToString().ShouldEqual("none");
         }
     }
 }

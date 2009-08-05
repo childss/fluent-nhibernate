@@ -28,7 +28,7 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection
         public void AccessMapped()
         {
             mapping.Access = "field";
-            inspector.Access.ShouldEqual(Access.Field());
+            inspector.Access.ShouldEqual(Access.Field);
         }
 
         [Test]
@@ -87,6 +87,28 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection
         public void GeneratorIsNotSet()
         {
             inspector.IsSet(Prop(x => x.Generator))
+                .ShouldBeFalse();
+        }
+
+        [Test]
+        public void LengthMapped()
+        {
+            mapping.Length = 100;
+            inspector.Length.ShouldEqual(100);
+        }
+
+        [Test]
+        public void LengthIsSet()
+        {
+            mapping.Length = 100;
+            inspector.IsSet(Prop(x => x.Length))
+                .ShouldBeTrue();
+        }
+
+        [Test]
+        public void LengthIsNotSet()
+        {
+            inspector.IsSet(Prop(x => x.Length))
                 .ShouldBeFalse();
         }
 

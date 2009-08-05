@@ -6,6 +6,7 @@ using FluentNHibernate.Mapping.Providers;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.Utils;
+using NHibernate.Persister.Entity;
 
 namespace FluentNHibernate.Mapping
 {
@@ -27,6 +28,7 @@ namespace FluentNHibernate.Mapping
         protected IVersionMappingProvider version;
         private ICompositeIdMappingProvider compositeId;
         private readonly HibernateMappingPart hibernateMappingPart = new HibernateMappingPart();
+        private PolymorphismBuilder<ClassMap<T>> polymorphism;
 
         public ClassMap()
             : this(new ClassMapping(typeof(T)))
@@ -37,6 +39,7 @@ namespace FluentNHibernate.Mapping
             this.mapping = mapping;
             optimisticLock = new OptimisticLockBuilder<ClassMap<T>>(this, value => mapping.OptimisticLock = value);
             Cache = new CachePart(typeof(T));
+            polymorphism = new PolymorphismBuilder<ClassMap<T>>(this, value => mapping.Polymorphism = value);
         }
 
         public string TableName
@@ -192,6 +195,7 @@ namespace FluentNHibernate.Mapping
             return part;
         }
 
+        [Obsolete("Inline definitions of subclasses are depreciated. Please create a derived class from SubclassMap in the same way you do with ClassMap.")]
         public virtual void JoinedSubClass<TSubclass>(string keyColumn, Action<JoinedSubClassPart<TSubclass>> action) where TSubclass : T
         {
             var subclass = new JoinedSubClassPart<TSubclass>(keyColumn);
@@ -245,7 +249,7 @@ namespace FluentNHibernate.Mapping
         /// </summary>
         /// <param name="tableName">Joined table name</param>
         /// <param name="action">Joined table mapping</param>
-        public void Table(string tableName, Action<JoinPart<T>> action)
+        public void Join(string tableName, Action<JoinPart<T>> action)
         {
             var join = new JoinPart<T>(tableName);
             action(join);
@@ -304,6 +308,52 @@ namespace FluentNHibernate.Mapping
         public OptimisticLockBuilder<ClassMap<T>> OptimisticLock
         {
             get { return optimisticLock; }
+        }
+
+        public PolymorphismBuilder<ClassMap<T>> Polymorphism
+        {
+            get { return polymorphism; }
+        }
+
+        public void CheckConstraint(string constraint)
+        {
+            mapping.Check = constraint;
+        }
+
+        public void Persister<TPersister>() where TPersister : IEntityPersister
+        {
+            Persister(typeof(TPersister));
+        }
+
+        private void Persister(Type type)
+        {
+            Persister(type.AssemblyQualifiedName);
+        }
+
+        private void Persister(string type)
+        {
+            mapping.Persister = type;
+        }
+
+        public void Proxy<TProxy>()
+        {
+            Proxy(typeof(TProxy));
+        }
+
+        private void Proxy(Type type)
+        {
+            Proxy(type.AssemblyQualifiedName);
+        }
+
+        private void Proxy(string type)
+        {
+            mapping.Proxy = type;
+        }
+
+        public void SelectBeforeUpdate()
+        {
+            mapping.SelectBeforeUpdate = nextBool;
+            nextBool = true;
         }
     }
 }

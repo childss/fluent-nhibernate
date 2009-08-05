@@ -29,7 +29,7 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection
         public void AccessMapped()
         {
             mapping.Access = "field";
-            inspector.Access.ShouldEqual(Access.Field());
+            inspector.Access.ShouldEqual(Access.Field);
         }
 
         [Test]
@@ -128,6 +128,28 @@ namespace FluentNHibernate.Testing.ConventionsTests.Inspection
         public void NameIsNotSet()
         {
             inspector.IsSet(Prop(x => x.Name))
+                .ShouldBeFalse();
+        }
+
+        [Test]
+        public void MappedMapped()
+        {
+            mapping.Mapped = true;
+            inspector.Mapped.ShouldEqual(true);
+        }
+
+        [Test]
+        public void MappedIsSet()
+        {
+            mapping.Mapped = true;
+            inspector.IsSet(Prop(x => x.Mapped))
+                .ShouldBeTrue();
+        }
+
+        [Test]
+        public void MappedIsNotSet()
+        {
+            inspector.IsSet(Prop(x => x.Mapped))
                 .ShouldBeFalse();
         }
 

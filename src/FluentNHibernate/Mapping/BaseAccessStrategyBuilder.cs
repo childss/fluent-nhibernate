@@ -41,6 +41,14 @@ namespace FluentNHibernate.Mapping
         }
 
         /// <summary>
+        /// Sets the access-strategy to use the backing-field of an auto-property.
+        /// </summary>
+        public void BackingField()
+        {
+            setValue("backfield");
+        }
+
+        /// <summary>
         /// Sets the access-strategy to field and the naming-strategy to camelcase (field.camelcase).
         /// </summary>
         public void CamelCaseField()
@@ -167,6 +175,16 @@ namespace FluentNHibernate.Mapping
         public void Using<TPropertyAccessorClass>()
         {
             ((AccessStrategyBuilder)this).Using(typeof(TPropertyAccessorClass));
+        }
+
+        public void NoOp()
+        {
+            setValue("noop");
+        }
+
+        public void None()
+        {
+            setValue("none");
         }
     }
 }
